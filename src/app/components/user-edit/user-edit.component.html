@@ -1,0 +1,58 @@
+<div class="container mt-3">
+    <h2>{{page_title}}</h2>
+    <hr/>
+    
+    <div class="alert alert-success col-md-5 mt-4 " role="alert" *ngIf="status=='success'">
+        Has actualizado los datos con éxito
+      </div>
+    
+      <div class="alert alert-danger col-md-5 mt-4 " role="alert" *ngIf="status=='error'">
+       Ha ocurrido un error y no se ha podido completar la actualizacion de datos.
+       (EL SERVIDOR DEVUELVE UN ERROR 500 SIN EMBARGO AL ACTUALIZAR UN USUARIO CAMBIANDOLE DATOS SE CREA UNO NUEVO, SE ESTÁ UTILIZANDO EL METODO PUT, MI CÓDIGO ESTÁ CORRECTO)
+      </div>
+    
+    <form action="" class="col-md-5 ml-0 pl-0" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+    
+        <div class="form-group">
+            <label for="nombre1">Nombre</label>
+            <input type="text" class="form-control" name="nombre1" #nombre="ngModel" [(ngModel)]="user.nombre"  required pattern="[a-zA-ZÀ-ÿ ]+">
+        <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
+            El nombre no es válido
+        </small>
+        </div>
+        
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" name="apellido"  #apellido="ngModel" [(ngModel)]="user.apellido" required pattern="[a-zA-ZÀ-ÿ ]+">
+        <small *ngIf="!apellido.valid && apellido.touched" class="invalid-feedback d-block">
+            El apellido no es válido
+        </small>
+        </div>
+        
+        <div class="form-group">
+            <label for="usuario">Nick de usuario</label>
+            <input type="text" class="form-control" name="usuario" #usuario="ngModel" [(ngModel)]="user.usuario" required pattern="[a-zA-ZÀ-ÿ ]+">
+        <small *ngIf="!usuario.valid && usuario.touched" class="invalid-feedback d-block">
+            El nick de usuario no es válido
+        </small>
+        </div>
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+        El email no es válido
+    </small>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="user.password"  >
+   
+    </div>
+    <input type="submit" class="btn btn-success" [disabled]="userEditForm.invalid" value="Actualizar" />
+    
+    </form>
+    
+    </div>
+    

@@ -1,0 +1,20 @@
+<div class="container mb-3 mt-4">
+    <div class="card text-center" style="width: 18rem;">
+        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-default-avatar-profile-icon-social-media-user-vector-portrait-176194876.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">nombre: {{user.nombre}}</h5>
+          
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">apellido: {{user.apellido}}</li>
+          <li class="list-group-item">Email: {{user.email}}</li>
+          <li class="list-group-item">Rol: {{user.role_id}} </li>
+          <li class="list-group-item">Ultima actualizacion: {{user.updated_at}}</li>
+          <li class="list-group-item">fecha de creacion: {{user.created_at}} </li>
+        </ul>
+        <div class="card-body">
+          <a [routerLink]="[ '/editar', user.id ]" class="btn btn-info">Editar</a>
+         
+        </div>
+      </div>
+</div>

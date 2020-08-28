@@ -1,0 +1,31 @@
+<div class="container  mt-3 ">
+    <h2>{{page_title}}</h2>
+
+    <p>Identificate</p>
+    <hr/>
+    <div class="alert alert-danger col-md-5 mt-4 " role="alert" *ngIf="status=='error'">
+        Ha ocurrido un error, por favor ingresa las credenciales correctas
+       </div>
+    <form action="" class="col-md-5 ml-0 pl-0" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+            El email no es válido
+        </small>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="user.password" required >
+        <small *ngIf="password.touched && password.valid" class="invalid-feedback d-block">
+           La contraseña no es válida
+        </small>
+        </div>
+        <input type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" value="Iniciar sesion"/>
+    </form>
+
+
+</div>
